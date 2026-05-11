@@ -239,7 +239,7 @@ function displayMessage(msg, type, file) {
     html += `
       <div style="margin-top:5px;">
         📎
-        <a href="/chatbot_project/${file}" target="_blank">
+        <a href="/chatbot_app/${file}" target="_blank">
           ${fileName}
         </a>
       </div>
