@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="chat-app" id="chatApp">
+
+        <div class="chat-header">
+            <div class="user-info">
+                <div class="avatar" id="chatAvatar">U</div>
+                <div>
+                    <div class="name" id="chatName">User</div>
+                    <div class="status-row">
+
+                        <span id="statusDot" class="dot offline"></span>
+
+                        <span id="chatStatus">
+                            Offline
+                        </span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-body" id="messages"></div>
+
+        <!-- FILE PREVIEW (NEW) -->
+        <div id="filePreview" class="file-preview"></div>
+
+        <div class="chat-footer">
+
+            <!-- FILE BUTTON -->
+            <label for="fileInput" class="file-btn">📎</label>
+            <input type="file" id="fileInput">
+
+            <!-- MESSAGE -->
+            <input type="text" id="msg" placeholder="Type a message...">
+
+            <!-- SEND -->
+            <button onclick="sendMessage(event)">➤</button>
+
+        </div>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

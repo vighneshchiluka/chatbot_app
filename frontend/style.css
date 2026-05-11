@@ -1,0 +1,271 @@
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #f0f2f5;
+    min-height: 100vh;
+}
+
+
+/* ================= CHAT CONTAINER ================= */
+.chat-app {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    background: #2f3542;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: all 0.35s ease;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ================= OPEN STATE ================= */
+.chat-app.open {
+    width: 360px;
+    height: 500px;
+    border-radius: 16px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+}
+
+.chat-app.open::before {
+    opacity: 0;
+}
+
+/* ================= CHAT ICON ================= */
+.chat-app::before {
+    content: '💬';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 22px;
+    transition: opacity 0.3s ease;
+}
+
+
+/* ================= HEADER ================= */
+.chat-header {
+    background: linear-gradient(135deg, #4f46e5, #4338ca);
+    padding: 14px 18px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: 0.3s ease;
+}
+
+.chat-app.open .chat-header {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.avatar {
+    width: 38px;
+    height: 38px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 600;
+}
+
+.user-info .name {
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.user-info .status-row {
+    color: rgba(255,255,255,0.8);
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.status-row-row {
+    display: flex; /* flex layout */
+    align-items: center; /* vertical center */
+    gap: 6px; /* spacing */
+    font-size: 12px; /* text size */
+    opacity: 0.9; /* slightly transparent */
+}
+
+.dot {
+    width: 10px; /* width */
+    height: 10px; /* height */
+    border-radius: 50%; /* circle */
+}
+
+.dot.online {
+    background: #22c55e; /* green color */
+}
+
+.dot.offline {
+    background: #9ca3af; /* gray color */
+}
+
+/* ================= CHAT BODY ================= */
+.chat-body {
+    flex: 1;
+    background: #f9fafb;
+    padding: 16px;
+    overflow-y: auto;
+    opacity: 0;
+    transition: 0.3s ease;
+}
+
+.chat-app.open .chat-body {
+    opacity: 1;
+}
+
+/* SCROLLBAR */
+.chat-body::-webkit-scrollbar {
+    width: 5px;
+}
+.chat-body::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+
+/* ================= MESSAGE ================= */
+.msg {
+    max-width: 75%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    line-height: 1.4;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+/* SENT */
+.sent {
+    background: #4f46e5;
+    color: white;
+    margin-left: auto;
+}
+
+/* links inside sent */
+.msg.sent a {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* RECEIVED */
+.received {
+    background: #e5e7eb;
+    color: #1f2937;
+}
+
+
+/* ================= FOOTER ================= */
+.chat-footer {
+    background: #ffffff;
+    padding: 12px;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: 0.3s ease;
+}
+
+.chat-app.open .chat-footer {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ================= FILE BUTTON ================= */
+.chat-footer input[type="file"] {
+    display: none;
+}
+
+.file-btn {
+    width: 38px;
+    height: 38px;
+    background: #e5e7eb;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.file-btn:hover {
+    background: #d1d5db;
+}
+
+/* ================= FILE PREVIEW ================= */
+.file-preview {
+    display: none;
+    padding: 6px 12px;
+    background: #eef2f7;
+    font-size: 12px;
+    border-top: 1px solid #e5e7eb;
+}
+
+
+/* ================= INPUT ================= */
+.chat-footer input[type="text"] {
+    flex: 1;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    font-size: 13px;
+    outline: none;
+    background: #f9fafb;
+}
+
+.chat-footer input[type="text"]:focus {
+    border-color: #4f46e5;
+    background: #ffffff;
+}
+
+
+/* ================= SEND BUTTON ================= */
+.chat-footer button {
+    width: 40px;
+    height: 40px;
+    background: #4f46e5;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+.chat-footer button:hover {
+    transform: scale(1.05);
+}
+
+
+/* ================= MOBILE ================= */
+@media (max-width: 480px) {
+    .chat-app.open {
+        width: calc(100vw - 24px);
+        height: 70vh;
+        right: 12px;
+        bottom: 12px;
+    }
+}
